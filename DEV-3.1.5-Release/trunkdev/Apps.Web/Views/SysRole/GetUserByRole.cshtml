@@ -1,0 +1,149 @@
+﻿@using Apps.Web.Core;
+@using Apps.Common;
+@using Apps.Models.Sys;
+@using Apps.Locale;
+@{
+    ViewBag.Title = "设置角色包含的用户";
+    Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
+
+    List<permModel> perm = null;
+}
+<div class="mvctool bgb">
+    <input id="txtQuery" placeholder="请输入关键字" type="text" class="searchText" />
+    @Html.ToolButton("btnQuery", "fa fa-search", Resource.Query, ref perm, "Query", true)
+    @Html.ToolButton("btnSave", "fa fa-save", Resource.Save, ref perm, "Create", true)
+</div>
+<table>
+    <tr>
+        <td style="vertical-align: top; width: 200px;">
+            @Html.Raw(ViewBag.StructTree)
+        </td>
+        <td style="vertical-align: top;padding: 3px">
+            <table id="UserList"></table>
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function getSelected() {
+        var node = $('#StructTree').tree('getSelected');
+        if (node) {
+            //var s = node.text;
+            //if (node.attributes) {
+            //    s += "," + node.attributes.id;
+            //}
+            var id = node.attributes.id;
+            $("#UserList").datagrid("load", { depId: id });
+        }
+    }
+    var idsArray = "@ViewBag.Flags".split(',');
+    $(function () {
+        $("#btnQuery").click(function () {
+            var queryStr = $("#txtQuery").val();
+            if (queryStr == null) {
+                queryStr = "%";
+            }
+            $("#UserList").datagrid("load", {queryStr: queryStr });
+        });
+
+        $('#UserList').datagrid({
+            url: '/SysRole/GetUserListByRole?roleId=@(ViewBag.RoleId)&depId=root',
+            width: SetGridWidthSub(190),
+            methord: 'post',
+            height: SetGridHeightSub(46),
+            fitColumns: true,
+            sortName: 'Id',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 12,
+            pageList: [12, 20, 30, 40, 50],
+            pagination: true,
+            striped: true, //奇偶行是否区分
+            singleSelect: false,
+            checkOnSelect: true,
+            selectOnCheck: true,
+            onLoadSuccess: function (data)
+            {
+                var rowsData = data.rows;
+                $.each(idsArray, function (i, e) {
+                    for (var index = 0; index < rowsData.length; index++) {
+                        if (rowsData[index].Id == e) {
+                            $('#UserList').datagrid('selectRow', index);
+                        }
+                    }
+                });
+
+            },
+            onUncheck: function (rowIndex, rowData) {
+                if (idsArray.length != 0) {
+
+                    for (var index = 0; index < idsArray.length; index++) {
+                        if (idsArray[index] == rowData.Id) {
+                            removeArrayValue(idsArray, rowData.Id);
+                            break;
+                        }
+                    }
+                }
+
+            },
+            onCheck: function (rowIndex, rowData) {
+
+                addArrayValue(idsArray, rowData.Id);
+            },
+            columns: [[
+                { field: 'ck', checkbox: true },
+                { field: 'Id', title: 'ID', width: 80, hidden: true },
+                { field: 'UserName', title: '用户名', width: 120 },
+                { field: 'TrueName', title: '姓名', width: 80 },
+
+            ]]
+
+        });
+    });
+</script>
+
+@*operation*@
+<script type="text/javascript">
+    $(function () {
+        $("#btnSave").click(function () {
+            var userIds = idsArray.join();
+            //提交数据库
+            $.post("/SysRole/UpdateUserRoleByRoleId", { roleId: '@(ViewBag.RoleId)', userIds: userIds },
+             function (data) {
+                 if (data.type == 1) {
+                     window.parent.frameReturnByMes(data.message);
+                     window.parent.frameReturnByReload(true);
+                     window.parent.frameReturnByClose()
+                 }
+                 else {
+                     window.parent.frameReturnByMes(data.message);
+                 }
+             }, "json");
+        });
+
+    });
+
+    function removeArrayValue(arr, val) {
+             for (var i = 0; i < arr.length; i++) {
+                        if (arr[i] == val) {
+                             arr.splice(i, 1);
+                                  break;
+            }
+        }
+    }
+    function addArrayValue(arr, val) {
+
+        if (!contains(arr, val)) {
+            arr.push(val);
+        }
+
+    }
+    function contains(arr, obj) {
+        var i = arr.length;
+        while (i--) {
+            if (arr[i] === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+</script>

@@ -1,0 +1,162 @@
+﻿@using Apps.Web.Core;
+@using Apps.Web;
+@using Apps.Common;
+@using Apps.Models.Sys;
+@using Apps.Locale;
+@{
+    ViewBag.Title = "Spl_Warehouse";
+    Layout = "~/Views/Shared/_Index_Layout.cshtml";
+    List<permModel> perm = null;
+}
+<script src="~/Areas/Demo/Content/prettify.js"></script>
+<link href="~/Areas/Demo/Content/prettify.css" rel="stylesheet" />
+<table>
+    <tr>
+        <td valign="top">
+            <table id="List"></table>
+        </td>
+        <td style="width:5px;">&nbsp;</td>
+        <td valign="top">
+            <div class="mvctool">
+                <a class="btn btn-default" id="SaveFlie">导出文件</a>
+            </div>
+            <div id="tt" class="easyui-tabs" >
+                <div title="Controller">
+                    <pre id="Controller" style="padding:10px;"  class="prettyprint"></pre>
+                </div>
+                <div title="Index">
+                    <pre  id="Index" style="padding:10px;"  class="prettyprint"></pre>
+                </div>
+                <div title="Create">
+                    <pre id="Create" style="padding:10px;" class="prettyprint"></pre>
+                </div>
+                <div title="Edit">
+                    <pre id="Edit" style="padding:10px;" class="prettyprint"></pre>
+                </div>
+                <div title="BLL">
+                    <pre id="BLL" style="padding:10px;" class="prettyprint"></pre>
+                </div>
+                <div title="Model">
+                    <pre id="Model" style="padding:10px;" class="prettyprint"></pre>
+                </div>
+            </div> 
+        </td>
+        <td style="width:5px;">&nbsp;</td>
+    </tr>
+</table>
+
+<div id="modalwindow" class="easyui-window" style="width:800px; height:400px;" data-options="modal:true,closed:true,minimizable:false,shadow:false"></div>
+<script type="text/javascript">
+    $(function () {
+
+        var ua = navigator.userAgent.toLocaleLowerCase();
+        var browserType=null;
+        if (ua.match(/msie/) != null || ua.match(/trident/) != null) {
+            $("body").html("<p style='padding:30px;'>代码生成器不支持IE浏览器!</p>");
+        }
+
+        var controllerHtml = "";
+        var indexHtml = "";
+        var createHtml = "";
+        var editHtml = "";
+        var bllHtml = "";
+        var modelHtml = "";
+        $('#List').datagrid({
+            url: '@Url.Action("GetList")',
+            title: '选择一个数据库表来操作',
+            width: 300,
+            methord: 'post',
+            height: $(window).height(),
+            fitColumns: true,
+            sortName: 'CreateTime',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 15,
+            pageList: [15, 20, 30, 40, 50],
+            pagination: false,
+            striped: true, //奇偶行是否区分
+            singleSelect: true,//单选模式
+            //rownumbers: true,//行号
+            onLoadSuccess: function (data) {
+            },
+            columns: [[
+                { field: 'name', title: '表名', width: 80, sortable: true },
+
+            ]],
+            onClickRow: function (index, row) {
+                var tableName = row.name;
+                //获取控制器
+                $.get("/Demo/PageTreeSingle/GetHtml?tableName=" + tableName, function (result) {
+                    controllerHtml = result.value.controller;
+                    indexHtml = result.value.index;
+                    createHtml = result.value.create;
+                    editHtml = result.value.edit;
+                    bllHtml = result.value.bll;
+                    modelHtml = result.value.model;
+                    $("#Controller").html(controllerHtml);
+                    $("#Index").html(unhtml(indexHtml));
+                    $("#Create").html(unhtml(createHtml));
+                    $("#Edit").html(unhtml(editHtml));
+                    $("#BLL").html(unhtml(bllHtml));
+                    $("#Model").html(unhtml(modelHtml));
+                    $(".prettyprinted").removeClass("prettyprinted");
+                    prettyPrint();
+                });
+
+            }
+        });
+
+        $("#SaveFlie").click(function () {
+            var row = $('#List').datagrid('getSelected');
+            if (row != null) {
+                download(row.name + "Controller.cs", controllerHtml);
+                download("Index.cshtml", indexHtml);
+                download("Create.cshtml", createHtml);
+                download("Edit.cshtml", editHtml);
+                download(row.name + "Model.cs", modelHtml);
+                download(row.name + "BLL.cs", bllHtml);
+            } else { $.messageBox5s(Lang.Tip, Lang.PleaseSelectTheOperatingRecord); }
+            //调用方法
+            
+        });
+    });
+    $(window).resize(function () {           
+        $('#tt').tabs('resize', {
+            plain: false,
+            boder: false,
+            width: $(window).width() - 320,
+            height: $(window).height()-40
+        });
+        $('#List').datagrid('resize', {
+            height: $(window).height() - 10
+        });
+    })
+    $(function () {
+        $('#tt').tabs({ plain: false, boder: false, width: $(window).width() - 300, height: $(window).height() -22});
+        $('#List').datagrid('resize', {
+            height: $(window).height()-10
+        });
+        $('pre').parent("div").width($(window).width() - 320).height($(window).height() - 40).css("overflow","auto");
+    });
+
+    function fake_click(obj) {
+        var ev = document.createEvent("MouseEvents");
+        ev.initMouseEvent(
+            "click", true, false, window, 0, 0, 0, 0, 0
+            , false, false, false, false, 0, null
+            );
+        obj.dispatchEvent(ev);
+    } function download(name, data) {
+        var urlObject = window.URL || window.webkitURL || window;
+
+        var downloadData = new Blob([data]);
+
+        var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+        save_link.href = urlObject.createObjectURL(downloadData);
+        save_link.download = name;
+        fake_click(save_link);
+    }
+  
+
+</script>
+

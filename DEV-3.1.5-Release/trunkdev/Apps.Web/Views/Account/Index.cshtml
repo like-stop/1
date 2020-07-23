@@ -1,0 +1,385 @@
+﻿@using Apps.Common;
+@using Apps.Locale;
+@{
+
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="IE=11.0000" http-equiv="X-UA-Compatible">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Admin</title>
+    <script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/account")
+    @Scripts.Render("~/bundles/common")
+    <link href="~/Content/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #fff;
+            color: #222;
+            font-family: 'Microsoft YaHei';
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top_div {
+            width: 100%;
+            height: 85px;
+            text-align: center;
+            border-bottom: 1px solid #eaeaea;
+            background: #f8f8f8;
+        }
+
+        #loginbody {
+        }
+
+        #LoginTopLine {
+            font-size: 30px;
+            color: #ff6600;
+            line-height: 60px;
+        }
+
+        #LoginBotoomLine, #LoginTopLine {
+            width: 100%;
+            font-weight: 700;
+        }
+
+        #LoginBotoomLine {
+            font-size: 18px;
+            line-height: 60px;
+        }
+
+        .ipt {
+            padding: 10px;
+            padding-left: 5px;
+            width: 200px;
+            border: 1px solid #d3d3d3;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+
+            .ipt:focus {
+                outline: 0;
+                border-color: #66afe9;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+            }
+
+        .u_logo {
+            top: 27px;
+        }
+
+        .p_logo, .u_logo {
+            left: 43px;
+            position: absolute;
+        }
+
+        .p_logo {
+            top: 9pt;
+        }
+
+        .s_logo {
+            position: absolute;
+            top: 9pt;
+            left: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #local {
+            float: right;
+            margin-right: 33px;
+            height: 23px;
+            line-height: 23px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+        .fa {
+            font-size: 14px;
+        }
+
+        @@keyframes a {
+            0% {
+                border-color: silver;
+            }
+
+            to {
+                border-color: #3e97eb;
+            }
+        }
+
+        .magic-checkbox, .magic-radio {
+            position: absolute;
+            display: none;
+        }
+
+            .magic-checkbox[disabled], .magic-radio[disabled] {
+                cursor: not-allowed;
+            }
+
+            .magic-checkbox + label,
+            .magic-radio + label {
+                position: relative;
+                padding-left: 22px;
+                padding-right: 6px;
+                cursor: pointer;
+                vertical-align: middle;
+            }
+
+                .magic-checkbox + label:hover:before, .magic-radio + label:hover:before {
+                    animation-duration: .4s;
+                    animation-fill-mode: both;
+                    animation-name: a;
+                }
+
+                .magic-checkbox + label:before {
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    content: '';
+                    border: 1px solid silver;
+                }
+
+                .magic-radio + label:before {
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    content: '';
+                    border: 1px solid silver;
+                }
+
+                .magic-checkbox + label:after, .magic-radio + label:after {
+                    position: absolute;
+                    display: none;
+                    content: '';
+                }
+
+            .magic-checkbox[disabled] + label, .magic-radio[disabled] + label {
+                cursor: not-allowed;
+                color: #e4e4e4;
+            }
+
+                .magic-checkbox[disabled] + label:after, .magic-checkbox[disabled] + label:before, .magic-checkbox[disabled] + label:hover, .magic-radio[disabled] + label:after, .magic-radio[disabled] + label:before, .magic-radio[disabled] + label:hover {
+                    cursor: not-allowed;
+                }
+
+                    .magic-checkbox[disabled] + label:hover:before, .magic-radio[disabled] + label:hover:before {
+                        border: 1px solid #e4e4e4;
+                        animation-name: none;
+                    }
+
+                .magic-checkbox[disabled] + label:before, .magic-radio[disabled] + label:before {
+                    border-color: #e4e4e4;
+                }
+
+            .magic-checkbox:checked + label:before, .magic-radio:checked + label:before {
+                animation-name: none;
+            }
+
+            .magic-checkbox:checked + label:after, .magic-radio:checked + label:after {
+                display: block;
+            }
+
+            .magic-radio + label:before {
+                border-radius: 50%;
+            }
+
+            .magic-radio + label:after {
+                top: 4px;
+                left: 4px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #3e97eb;
+            }
+
+            .magic-radio:checked + label:before {
+                border: 1px solid #3e97eb;
+            }
+
+            .magic-radio:checked[disabled] + label:before {
+                border: 1px solid #c9e2f9;
+            }
+
+            .magic-radio:checked[disabled] + label:after {
+                background: #c9e2f9;
+            }
+
+            .magic-checkbox + label:before {
+                border-radius: 3px;
+            }
+
+            .magic-checkbox + label:after {
+                top: 2px;
+                left: 7px;
+                box-sizing: border-box;
+                width: 6px;
+                height: 12px;
+                transform: rotate(45deg);
+                border: 2px solid #fff;
+                border-top: 0;
+                border-left: 0;
+            }
+
+            .magic-checkbox:checked + label:before {
+                border: #3e97eb;
+                background: #3e97eb;
+            }
+
+            .magic-checkbox:checked[disabled] + label:before {
+                border: #c9e2f9;
+                background: #c9e2f9;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: 3px 8px;
+            margin-bottom: 0;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+            .btn-success:hover {
+                color: #fff;
+                background-color: #449d44;
+                border-color: #398439;
+            }
+    </style>
+
+    <meta name="GENERATOR" content="MSHTML 11.00.9600.17496">
+    <script>
+        $(function () {
+            $("#local").change(function () {
+                window.location.href = "/" + $("#local").val() + "/Account/Index";
+            });
+
+            var url = window.location.href.toLowerCase();
+            if (url.indexOf("zh-cn") > -1) {
+                $("#local").val("zh-CN");
+            } else if (url.indexOf("zh-tw") > -1) {
+                $("#local").val("zh-TW");
+            } else if (url.indexOf("en-us") > -1) {
+                $("#local").val("en-US");
+            } else {
+                $("#local").val("zh-CN");
+            }
+
+
+        });
+
+    </script>
+</head>
+<body>
+    <div class="top_div">
+        <table cellspacing="0">
+            <tr>
+                <td style="width:150px;"></td>
+                <td style="width:84px;">
+                    <div style="overflow:hidden;"><img src="/Content/Images/logo.png" /></div>
+                </td>
+                <td><div id="LoginTopLine">@ViewBag.WebName</div></td>
+                <td style="width:20px;"><div style="width:10px;border-right:1px solid #ccc;">&nbsp;</div></td>
+                <td><div id="LoginBotoomLine">@ViewBag.ComName</div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="background:url('/Content/Images/login.jpg');z-index:-999; width:100%;height:300px;position:absolute;  top:30%;  ">&nbsp;</div>
+
+    <div id="loginbody" style="position:absolute;  top:20%; left:40%; z-index:999; background:#fff;border:1px solid #e7e7e7; border-image:none;width:385px;height:450px;text-align:center;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;">
+        <p style="padding: 30px 0px 30px 40px; position: relative; text-align:left;font-weight:bold">
+            <span style="font-size:25px;">@Resource._UserLogin</span>
+            <select id="local">
+                <option value="zh-CN">简体中文</option>
+                <option value="en-US">English</option>
+            </select>
+        </p>
+        <table>
+            <tr>
+                <td style="padding:15px 0px 5px; width:100px; text-align:right">
+                    @Resource.SysUser_UserName：
+                </td>
+                <td style="padding:15px 0px 5px;">
+                    <input id="UserName" name="UserName" class="ipt" type="text" placeholder="@Resource._PleaseInputUserName" value="">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:15px 0px 5px; width:100px; text-align:right">
+                    @Resource._LoginPwd：
+                </td>
+                <td style="padding:15px 0px 5px;">
+                    <input class="ipt" id="Password" type="Password" placeholder="@Resource._PleaseInputPwd" value="">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:15px 0px 5px; width:100px; text-align:right">
+                    @Resource._VerificationCode：
+                </td>
+                <td style="padding:15px 0px 5px; text-align:left">
+                    <input class="ipt " style="width:90px" type="text" name="ValidateCode" id="ValidateCode" />
+                    <img id="codeImg" alt="@Resource._RefreshValidationCode" style="margin-bottom: -12px; cursor: pointer;" src="~/Core/verify_code.ashx" onclick="this.src=this.src+'?'" />
+                </td>
+            </tr>
+        </table>
+
+        <p style="position: relative; text-align:left; margin-left:32px; margin-top:20px;">
+            <input class="magic-checkbox" type="checkbox" checked="checked" name="SaveAccount" value="1" id="SaveAccount"><label for="SaveAccount">@Resource._NextAutoLogin</label>
+        </p>
+        <div style="height: 63px; line-height:63px; margin-top: 20px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
+            <p style="margin: 0px 35px 0px 45px;">
+
+                <span>
+
+                    <a id="LoginSys" class="btn btn-success" style="width:200px;height:35px; line-height:35px;"
+                       href="#">@Resource._Login</a>
+                </span>
+                <div id="mes" class="field-validation-error">
+                </div>
+                <div id="Loading" style="display: none" class='panel-loading'><font color='#000'>@Resource._Loading...</font></div>
+            </p>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<div style="background: #f8f8f8; height: 40px; width: 100%; text-align: center; line-height: 40px; border-top: 1px #e7e7e7 solid; bottom: 0; position: absolute">
+    @ViewBag.CopyRight
+</div>
+

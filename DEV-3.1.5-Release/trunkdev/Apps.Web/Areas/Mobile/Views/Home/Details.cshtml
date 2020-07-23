@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ShortCodes";
+    Layout = "~/Areas/Mobile/Views/Shared/_Index_Layout.cshtml";
+}
+
+
+
+    <div id="header">
+        <a href="#menu"></a>
+        <span id="Logo" class="svg">
+            商品详情
+        </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+
+    <div id="content">
+
+        <article>
+
+            <img src="~/Areas/Mobile/Content/img/1.png" />
+            <h2><a href="#">技术新闻</a></h2>
+          
+            <p>
+                1.使用强大的UI组件EasyUI
+            </p>
+
+            <p>2.用Unity作为DI容器实现控制反转(IOC) </p>
+
+
+
+            <p> 3.给予角色组的权限：按钮，数据列，数据行，组织架构权限 </p>
+           
+            <div class="a-meta">
+                <a href="#"><i class="i-comments i-small"></i>0 评论</a>
+                <a href="#"><i class="i-author i-small"></i>有米</a>
+                <a href="#"><i class="i-calendar i-small"></i>2018-12-31</a>
+            </div>
+            <div class="article-comments">
+                <h3>留言</h3>
+             
+                <ul>
+                    
+                    <li>
+                        <form id="contact" class="contactForm">
+
+                            <label>昵称 <span class="required">*</span></label>
+                            <input type="text" name="name" id="ContactName" placeholder="Name">
+
+                            <label>邮箱 <span class="required">*</span></label>
+                            <input type="email" name="mail" id="ContactEmail" placeholder="Email">
+
+                            <label>内容 <span class="required">*</span></label>
+                            <textarea id="ContactMessage" name="comment" placeholder="Message"></textarea>
+
+                            <input type="submit" class="btn-normal" id="SubmitContact" value="提交">
+
+                            <div id="msg" class="notifications" style="display:none"></div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+</div>

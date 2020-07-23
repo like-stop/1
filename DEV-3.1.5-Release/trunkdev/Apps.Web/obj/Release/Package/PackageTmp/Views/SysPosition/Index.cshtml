@@ -1,0 +1,270 @@
+﻿@using Apps.Web.Core;
+@using Apps.Web;
+@using Apps.Common;
+@using Apps.Models.Sys;
+@using Apps.Locale;
+@{
+    ViewBag.Title = "SysPosition";
+    Layout = "~/Views/Shared/_Index_Layout.cshtml";
+    List<permModel> perm = null;
+}
+<div id = "uploadExcel" class="easyui-window" data-options="modal:true,closed:true,minimizable:false,shadow:false">
+<form name = "form1" method="post" id="form1">
+    <table>
+        <tr>
+            <th style="padding:20px;"> Excel：</th>
+            <td style="padding:20px;">
+                <input name="ExcelPath" type="text" maxlength="255" id="txtExcelPath" readonly="readonly" style="width:200px" class="txtInput normal left">
+                <a class="files">@Resource.Browse<input  type="file" id="FileUpload" name="FileUpload" onchange="Upload('ExcelFile', 'txtExcelPath', 'FileUpload'); ">
+</a>
+                <span class="uploading">@Resource.Uploading</span>
+            </td>
+        </tr>
+    </table>
+    <div class="endbtndiv">
+        <a id = "btnSave" href="javascript:ImportData()" class="easyui-linkbutton btns">直接保存</a>
+        <a id = "btnReturn" href="javascript:$('#uploadExcel').window('close')" class="easyui-linkbutton btnc">@Resource.Cancel</a>
+    </div>
+</form>
+</div>
+<table style="width:100%">
+<tbody>
+    <tr>
+        <td style="width:330px;vertical-align: top">
+             <div class="mvctool">
+                 @Html.ToolButton("btnCreateParent", "fa fa-plus", Resource.Create,ref perm, "Create", true)
+                 @Html.ToolButton("btnEditParent", "fa fa-pencil", Resource.Edit,ref perm, "Edit", true)
+                 @Html.ToolButton("btnDeleteParent", "fa fa-trash", Resource.Delete,ref perm, "Delete", true)
+             </div>
+            <table id="ListParent"></table>
+        </td>        <td style="width:5px;"></td>
+        <td style="vertical-align:top">
+             <div class="mvctool">
+               
+                 @Html.ToolButton("btnCreate", "fa fa-plus", Resource.Create,ref perm, "Create", true)
+                 @Html.ToolButton("btnEdit", "fa fa-pencil", Resource.Edit,ref perm, "Edit", true)
+                 @Html.ToolButton("btnDelete", "fa fa-trash", Resource.Delete,ref perm, "Delete", true)
+                 @Html.ToolButton("btnImport", "fa fa-level-down", Resource.Import, ref perm, "Import", true)
+                 @Html.ToolButton("btnExport", "fa fa-level-up", Resource.Export, ref perm, "Export", true)
+             </div>
+            <table id="List"></table>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<div id="modalwindow" class="easyui-window" style="width:800px; height:400px;" data-options="modal:true,closed:true,minimizable:false,shadow:false"></div>
+<script type="text/javascript">
+    $(function () {
+        $('#ListParent').treegrid({
+            url: '@Url.Action("GetListParent")',
+            width: 530,
+            methord: 'post',
+            height: SetGridHeightSub(37),
+            fitColumns: true,
+            treeField: 'Name',
+            idField: 'Id',
+            pagination: false,
+            striped: true, //奇偶行是否区分
+            singleSelect: true,//单选模式
+            //rownumbers: true,//行号
+            columns: [[
+                { field: 'Id', title: 'ID', width: 50,hidden:true },
+                { field: 'Name', title: '名称', width: 150 },
+                { field: 'ParentId', title: '上级ID', width: 50 },
+                { field: 'Sort', title: '@Resource.TitleSort', width: 40 },
+                {
+                    field: 'Enable', title: '是否启用', width: 60, align: 'center', formatter: function (value) { return EnableFormatter(value) }
+                },
+                { field: 'Remark', title: '备注', width: 80 },
+                { field: 'CreateTime', title: '创建时间', width: 80, hidden: true }
+            ]]
+         ,onClickRow: function(row) {
+             $('#List').datagrid("load", { ParentId: row.Id });
+        }
+        }).datagrid('getPager').pagination({ showPageList: false, showRefresh: false });
+         $(window).resize(function() {
+             resizeLayout();
+         });
+        $('#List').datagrid({
+            url: '@Url.Action("GetList")?parentId=0',
+            width:SetGridWidthSub(546),
+            methord: 'post',
+            height: SetGridHeightSub(37),
+            fitColumns: true,
+            sortName: 'Sort',
+            sortOrder: 'asc',
+            idField: 'Id',
+            pageSize: 15,
+            pageList: [15, 20, 30, 40, 50],
+            pagination: true,
+            striped: true, //奇偶行是否区分
+            singleSelect: true,//单选模式
+            //rownumbers: true,//行号
+            onLoadSuccess: function(data) {
+            },
+            columns: [[
+                { field: 'Id', title: 'GUID主键', width: 80,hidden:true },
+                { field: 'Name', title: '职位名称', width: 80,sortable:true },
+                { field: 'Remark', title: '职位说明', width: 80,sortable:true },
+                { field: 'Sort', title: '排序', width: 80,sortable:true },
+                { field: 'CreateTime', title: '创建时间', width: 80, sortable: true, hidden: true },
+                { field: 'Enable', title: '状态', width: 40,sortable:true,align:'center', formatter: function (value) {return EnableFormatter(value)}},
+                { field: 'MemberCount', title: '职位允许人数', width: 80,sortable:true },
+                { field: 'DepId', title: '所属部门', width: 80,sortable:true },
+                { field: 'DepName', title: '类别名称', width: 80 }
+            ]]
+        });
+    });
+    //ifram 返回
+    function frameReturnByClose() {
+        $("#modalwindow").window('close');
+    }
+    function frameReturnByReload(flag) {
+        if (flag)
+        {
+            $("#List").datagrid('load');
+        }
+        else
+        {
+            $("#List").datagrid('reload');
+        }
+    }
+
+    function frameReturnByReloadTree(flag) {
+
+        //var node = $('#ListParent').treegrid('getSelected');
+        //if (node) {
+        //    $('#ListParent').treegrid('reload', node.Id);
+        //} else {
+            $('#ListParent').treegrid('reload');
+        //}
+
+    }
+
+    function frameReturnByMes(mes) {
+        $.messageBox5s(Lang.Tip, mes);
+    }
+    $(function () {
+        $("#btnCreate").click(function () {
+            var row = $('#ListParent').treegrid('getSelected');
+            if (row != null) {
+                $.modalWindow(Lang.Create, '@Url.Action("Create")?parentId='+row.Id, 700, 400, 'fa fa-plus');
+            } else { $.messageBox5s(Lang.Tip, "请选择一个部门！"); }
+        });
+        $("#btnEdit").click(function () {
+            var row = $('#List').datagrid('getSelected');
+            if (row != null) {
+                $.modalWindow(Lang.Edit, '@Url.Action("Edit")?id=' + row.Id + '&Ieguid=' + GetGuid(), 700, 400, 'fa fa-pencil');
+            } else { $.messageBox5s(Lang.Tip, Lang.PleaseSelectTheOperatingRecord); }
+        });
+        $("#btnDetails").click(function () {
+            var row = $('#List').datagrid('getSelected');
+            if (row != null) {
+                $.modalWindow(Lang.Details, '@Url.Action("Details")?id=' + row.Id + '&Ieguid=' + GetGuid(), 700, 400, 'fa fa-list');
+            } else { $.messageBox5s(Lang.Tip, Lang.PleaseSelectTheOperatingRecord); }
+	        });
+        $("#btnQuery").click(function () {
+            var queryStr = $("#txtQuery").val();
+            if (queryStr == null) {
+                queryStr = "%";
+            }
+            $("#List").datagrid("load", { queryStr: queryStr });
+
+        });
+        $("#btnDelete").click(function () {
+	            dataDelete("@Url.Action("Delete")", "List");
+	        });
+        $("#btnImport").click(function() {
+             $("#txtExcelPath").val("");
+             $("#uploadExcel").window({ title: '@Resource.Import', width: 450, height: 155, iconCls: 'fa fa-level-down' }).window('open');
+        });
+        $("#btnExport").click(function() {
+          $.post("@Url.Action("CheckExportData")", function(data) {
+                if (data.type == 1)
+                {
+                    window.location = "@Url.Action("Export")";
+                }
+                else
+                {
+                $.messageBox5s(Lang.Tip, data.message);
+                }
+            }, "json");
+        });
+
+
+        $("#btnCreateParent").click(function () {
+            var row = $('#ListParent').treegrid('getSelected');
+            if (row != null) {
+                $.modalWindow(Lang.Create, '@Url.Action("CreateParent")?id=' + (row != null ? row.Id : "0") + '&Ieguid=' + GetGuid(), 700, 400, 'fa fa-pencil');
+            } else { $.messageBox5s(Lang.Tip,"请选择一个上级！"); }
+        });
+
+        $("#btnEditParent").click(function () {
+            var row = $('#ListParent').treegrid('getSelected');
+            if (row != null) {
+                $.modalWindow(Lang.Edit, '@Url.Action("EditParent")?id=' + row.Id + '&Ieguid=' + GetGuid(), 700, 430, 'fa fa-plus');
+            } else { $.messageBox5s(Lang.Tip, Lang.PleaseSelectTheOperatingRecord); }
+        });
+
+        $("#btnDetailsParent").click(function () {
+            var row = $('#List').treegrid('getSelected');
+            if (row != null) {
+                $.modalWindow(Lang.Details, '@Url.Action("DetailsParent")?id=' + row.Id + '&Ieguid=' + GetGuid(), 700, 400, 'fa fa-list');
+            } else { $.messageBox5s(Lang.Tip, Lang.PleaseSelectTheOperatingRecord); }
+	        });
+        $("#btnQueryParent").click(function () {
+            var queryStr = $("#txtQueryParent").val();
+            if (queryStr == null) {
+                queryStr = "%";
+            }
+            $("#ListParent").treegrid("load", { queryStr: queryStr });
+
+        });
+        $("#btnDeleteParent").click(function () {
+            var row = $('#ListParent').datagrid('getSelected');
+            if (row != null) {
+                $.messager.confirm(index_lang_tip, "您确定要删除所选记录吗？", function (r) {
+                    if (r) {
+                        $.post("@Url.Action("DeleteParent")", row, function (data) {
+                            if (data.type == 1)
+                                $('#ListParent').treegrid('reload');
+                                    $.messageBox5s(Lang.Tip, data.message);
+                        }, "json");
+
+                    }
+                });
+            } else { $.messageBox5s(Lang.Tip, CommonLang.PleaseSelectTheOperatingRecord); }
+	       });
+    });
+    function ImportData()
+    {
+        showLoading();
+        var url = "@Url.Action("Import")?filePath="+$("#txtExcelPath").val();
+        $.post(url, function(data) {
+            if (data.type == 1)
+            {
+             $("#List").datagrid('load');
+             $('#uploadExcel').window('close');
+             $('#FileUpload').val('');
+            }
+            hideLoading();
+            $.messageBox5s('提示', data.message);
+        }, "json");
+    }
+    function resizeLayout()
+     {
+         setTimeout(function () {
+             $('#ListParent').datagrid('resize', {
+             }).datagrid('resize', {
+                 height: SetGridHeightSub(45)
+             });
+             $('#List').datagrid('resize', {
+             }).datagrid('resize', {
+                 width: $(window).width() - 450,
+                 height: SetGridHeightSub(45)
+             });
+         },100);
+	    }
+</script>
+

@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "ShortCodes";
+    Layout = "~/Areas/Mobile/Views/Shared/_Index_Layout.cshtml";
+}
+
+
+
+<div class="easyui-navpanel">
+    <div id="header">
+        <a href="#menu"></a>
+        <span id="Logo" class="svg">
+            个人中心
+        </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+
+    <div style="width:100%;height:200px; text-align:center; background:#355781">
+        <div style="height:50px; line-height:50px; color:#fff;font-size:14px;">电脑令人发狂的</div>
+        <img style="width:120px;border:3px solid #fff;border-radius: 50%" src="~/Areas/Mobile/Content/img/head.jpg" />
+    </div>
+    <ul class="m-list">
+        <li><a href="#" onclick="openP1(this)">密码修改</a></li>
+        <li><a href="#" onclick="openP2(this)">资料修改</a></li>
+        <li><a href="#" onclick="openP3(this)">余额查询</a></li>
+        <li><a href="#" onclick="openP4(this)">我的设置</a></li>
+    </ul>
+    <div style="text-align:center;color:#fff;padding:30px;">
+        <a href="#" class="easyui-linkbutton btn btn-danger" style="width:100%;height:40px"><span style="font-size:16px">退出登录</span></a>
+    </div>
+
+
+</div>
+<div id="p1" class="easyui-navpanel">
+    <div id="header">
+        
+        <span id="Logo" class="svg">
+            修改密码
+        </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+
+    <form id="ff" style="padding:30px 30px 0 30px;">
+        <div style="margin-bottom:10px">
+            <input class="easyui-passwordbox" label="旧密码:" prompt="请输入原始密码" style="width:100%">
+        </div>
+     
+        <div style="margin-bottom:10px">
+            <input class="easyui-passwordbox" label="当前密码:" prompt="请输入新的密码" style="width:100%">
+        </div>
+        <div style="margin-bottom:10px">
+            <input class="easyui-passwordbox" label="确认密码:" prompt="请输入新的确认密码" style="width:100%">
+        </div>
+    </form>
+
+    <div style="text-align:center;color:#fff;padding:30px;">
+        <a href="javascript:EditPasswrod()" class="easyui-linkbutton btn btn-success" style="width:100%;height:40px"><span style="font-size:16px">确认修改</span></a>
+    </div>
+</div>
+<div id="p2" class="easyui-navpanel">
+    <div id="header">
+        
+        <span id="Logo" class="svg">
+            资料修改
+        </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+</div>
+<div id="p3" class="easyui-navpanel">
+    <div id="header">
+        
+        <span id="Logo" class="svg">
+            余额查询
+        </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+</div>
+<div id="p4" class="easyui-navpanel">
+    <div id="header">
+        
+        <span id="Logo" class="svg">
+            我的设置
+        </span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+</div>
+
+<div id="dlg1" class="easyui-dialog" style="padding:20px 6px;width:80%;" data-options="inline:true,modal:true,closed:true,title:'提示'">
+    <p>修改成功，请牢记您的密码.</p>
+    <div class="dialog-button">
+        <a href="javascript:void(0)" class="easyui-linkbutton" style="width:100%;height:35px" onclick="$('#dlg1').dialog('close')">OK</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function openP1(target) {
+        $.mobile.go('#p1');
+    }
+    function openP2(target) {
+        $.mobile.go('#p2');
+    }
+    function openP3(target) {
+        $.mobile.go('#p3');
+    }
+    function openP4(target) {
+        $.mobile.go('#p4');
+    }
+
+    function EditPasswrod()
+    {
+        $('#dlg1').dialog('open').dialog('center')
+    }
+
+</script>

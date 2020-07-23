@@ -1,0 +1,576 @@
+﻿@using Apps.Web.Core;
+@using Apps.Locale;
+@using Apps.Models.Enum;
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Index_Layout.cshtml";
+}
+@*<script src="~/Scripts/echarts.min.js"></script>*@
+<script src="~/Scripts/ECharts/echartsall.min.js"></script>
+<script src="~/Scripts/ECharts/china.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/AdminLTE/AdminLTE.min.css" rel="stylesheet" />
+<link href="~/Content/progress/css/iconfont/iconfont.css" rel="stylesheet" />
+<link href="~/Content/progress/style/reset.css" rel="stylesheet" />
+<link href="~/Content/progress/style/style.css" rel="stylesheet" />
+<script src="~/Content/progress/js/zcircleMove.js"></script>
+<style>
+    body {
+        font-size: 13px;
+        font-family: 'Microsoft YaHei' !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-family: 'Microsoft YaHei' !important;
+    }
+
+    .box-body {
+        min-height: 400px;
+    }
+
+    .box-header > .fa, .box-header > .glyphicon, .box-header > .ion, .box-header .box-title {
+        font-size: 14px;
+    }
+
+    .label {
+        line-height: 2px;
+        padding: 1px;
+    }
+
+    #notePartContent h2 {
+        font-size: 14px;
+    }
+
+    .box-body {
+        text-align: center;
+    }
+</style>
+<script>
+    $(function () {
+
+
+        //圆环进度
+
+        var part1_option = {
+            obj: 'part1_1',
+            percent: 0.1,
+            url: '/Content/progress/images/zstart.png',   //飞机小图地址
+            imgWidth: 1,
+            imgHeight: 1,
+            circleBottomColor: "#e6eaed",//圆环底色
+            outerColorStart: '#ebf7ff',  //外部圆环 渐变色
+            outerColorMid: '#d8eefc',
+            outerColorEnd: '#a7cee7',
+            innerColorStart: '#6fbef0',  //内部圆环 渐变色
+            innerColorEnd: '#058ee4',
+        };
+
+        part1_option.obj = 'part1_1';
+        part1_option.percent = 0.3;
+        runCircle(part1_option);
+
+        part1_option.obj = 'part1_2';
+        part1_option.percent = 0.1;
+        runCircle(part1_option);
+
+        part1_option.obj = 'part1_3';
+        part1_option.percent = 0.7;
+        runCircle(part1_option);
+
+        part1_option.obj = 'part1_4';
+        part1_option.percent = 0.6;
+        runCircle(part1_option);
+
+        //饼图
+       var part2_option = {
+            title: {
+                text: '某站点用户访问来源',
+                subtext: '纯属虚构',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        { value: 335, name: '直接访问' },
+                        { value: 310, name: '邮件营销' },
+                        { value: 234, name: '联盟广告' },
+                        { value: 135, name: '视频广告' },
+                        { value: 1548, name: '搜索引擎' }
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+       var part2_chart = echarts.init(document.getElementById('part2'));
+       part2_chart.setOption(part2_option);
+
+        //折线图
+       var part3_option = {
+           xAxis: {
+               type: 'category',
+               data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+           },
+           yAxis: {
+               type: 'value'
+           },
+           series: [{
+               data: [820, 932, 901, 934, 1290, 1330, 1320],
+               type: 'line'
+           }]
+       };
+
+
+       var part3_chart = echarts.init(document.getElementById('part3'));
+       part3_chart.setOption(part3_option);
+
+
+        //堆叠条形图
+       var part4_option = {
+           tooltip: {
+               trigger: 'axis',
+               axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                   type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+               }
+           },
+           legend: {
+               data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+           },
+           grid: {
+               left: '3%',
+               right: '4%',
+               bottom: '3%',
+               top:'12%',
+               containLabel: true
+           },
+           xAxis: {
+               type: 'value'
+           },
+           yAxis: {
+               type: 'category',
+               data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+           },
+           series: [
+               {
+                   name: '直接访问',
+                   type: 'bar',
+                   stack: '总量',
+                   label: {
+                       normal: {
+                           show: true,
+                           position: 'insideRight'
+                       }
+                   },
+                   data: [320, 302, 301, 334, 390, 330, 320]
+               },
+               {
+                   name: '邮件营销',
+                   type: 'bar',
+                   stack: '总量',
+                   label: {
+                       normal: {
+                           show: true,
+                           position: 'insideRight'
+                       }
+                   },
+                   data: [120, 132, 101, 134, 90, 230, 210]
+               },
+               {
+                   name: '联盟广告',
+                   type: 'bar',
+                   stack: '总量',
+                   label: {
+                       normal: {
+                           show: true,
+                           position: 'insideRight'
+                       }
+                   },
+                   data: [220, 182, 191, 234, 290, 330, 310]
+               },
+               {
+                   name: '视频广告',
+                   type: 'bar',
+                   stack: '总量',
+                   label: {
+                       normal: {
+                           show: true,
+                           position: 'insideRight'
+                       }
+                   },
+                   data: [150, 212, 201, 154, 190, 330, 410]
+               },
+               {
+                   name: '搜索引擎',
+                   type: 'bar',
+                   stack: '总量',
+                   label: {
+                       normal: {
+                           show: true,
+                           position: 'insideRight'
+                       }
+                   },
+                   data: [820, 832, 901, 934, 1290, 1330, 1320]
+               }
+           ]
+       };
+        var part4_chart = echarts.init(document.getElementById('part4'));
+        part4_chart.setOption(part4_option);
+        //销售情况
+        var part5_option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['合同金额', '到款金额']
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['8-01', '8-02', '8-03', '8-04', '8-05', '8-06', '8-07']
+                }
+            ], grid: {
+                top: '7%',
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '',
+                    min: 0,
+                    //max:700,
+                    interval: 50,
+                    axisLabel: {
+                        formatter: '{value} '
+                    }
+                }
+            ],
+            series: [
+
+                {
+                    name: '降水量',
+                    type: 'bar',
+
+                    /*设置柱状图颜色*/
+                    itemStyle: {
+                        normal: {
+                            color: function (params) {
+                                // build a color map as your need.
+                                var colorList = [
+                                  '#fe4f4f', '#fead33', '#feca2b', '#fef728', '#c5ee4a',
+                                   '#87ee4a', '#46eda9', '#47e4ed', '#4bbbee', '#7646d8',
+                                   '#924ae2', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                                ];
+                                return colorList[params.dataIndex]
+                            },
+                            /*信息显示方式*/
+                            label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{c}'
+                            }
+                        }
+                    },
+                    data: [50, 75, 100, 150, 200, 250, 150]
+                },
+                {
+                    name: '折线',
+                    type: 'line',
+                    itemStyle: {  /*设置折线颜色*/
+                        normal: {
+                            color: '#6495ED'
+                        }
+                    },
+                    data: [20, 40, 50, 70, 125, 200, 40]
+                }
+            ]
+        };
+        var part5_chart = echarts.init(document.getElementById('part5'));
+        part5_chart.setOption(part5_option);
+        //基础雷达图
+        var part6_option = {
+            title: {
+                text: ''
+            },
+            tooltip: {},
+            legend: {
+                data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+            },
+            radar: {
+                // shape: 'circle',
+                name: {
+                    textStyle: {
+                        color: '#fff',
+                        backgroundColor: '#999',
+                        borderRadius: 3,
+                        padding: [3, 5]
+                    }
+                },
+                indicator: [
+                   { name: '销售（sales）', max: 6500 },
+                   { name: '管理（Administration）', max: 16000 },
+                   { name: '信息技术（Information Techology）', max: 30000 },
+                   { name: '客服（Customer Support）', max: 38000 },
+                   { name: '研发（Development）', max: 52000 },
+                   { name: '市场（Marketing）', max: 25000 }
+                ]
+            },
+            series: [{
+                name: '预算 vs 开销（Budget vs spending）',
+                type: 'radar',
+                // areaStyle: {normal: {}},
+                data: [
+                    {
+                        value: [4300, 10000, 28000, 35000, 50000, 19000],
+                        name: '预算分配（Allocated Budget）'
+                    },
+                     {
+                         value: [5000, 14000, 28000, 31000, 42000, 21000],
+                         name: '实际开销（Actual Spending）'
+                     }
+                ]
+            }]
+        };
+        var part6_chart = echarts.init(document.getElementById('part6'));
+        part6_chart.setOption(part6_option);
+        //展商区域分布
+        var mydata = [
+                { name: '北京', value: '100' }, { name: '天津', value: randomData() },
+                { name: '上海', value: randomData() }, { name: '重庆', value: randomData() },
+                { name: '河北', value: randomData() }, { name: '河南', value: randomData() },
+                { name: '云南', value: randomData() }, { name: '辽宁', value: randomData() },
+                { name: '黑龙江', value: randomData() }, { name: '湖南', value: randomData() },
+                { name: '安徽', value: randomData() }, { name: '山东', value: randomData() },
+                { name: '新疆', value: randomData() }, { name: '江苏', value: randomData() },
+
+        ];
+        var optionMap = {
+            backgroundColor: '#FFFFFF',
+            title: {
+                text: '全国地图大数据',
+                subtext: '',
+                x: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+
+            //左侧小导航图标
+            visualMap: {
+                show: true,
+                x: 'left',
+                y: 'center',
+                splitList: [
+                    { start: 500, end: 600 }, { start: 400, end: 500 },
+                    { start: 300, end: 400 }, { start: 200, end: 300 },
+                    { start: 100, end: 200 }, { start: 0, end: 100 },
+                ],
+                color: ['#5475f5', '#9feaa5', '#85daef', '#74e2ca', '#e6ac53', '#9fb5ea']
+            },
+
+            //配置属性
+            series: [{
+                name: '数据',
+                type: 'map',
+                mapType: 'china',
+                roam: true,
+                label: {
+                    normal: {
+                        show: true  //省份名称
+                    },
+                    emphasis: {
+                        show: false
+                    },
+
+                },
+                data: mydata  //数据
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('part7'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(optionMap);
+
+
+    });
+    function randomData() {
+        return Math.round(Math.random() * 500);
+    }
+</script>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-bullhorn"></i>&nbsp;圆环进度</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="surePass">
+                    <div class="anyield">
+                        <p>销售面积</p>
+                        <p>10000㎡</p>
+                    </div>
+                    <canvas class="circleRun" data-run="0" id="part1_1" amout="2000" nowData="1000"></canvas>
+                </div>
+                <div class="surePass">
+                    <div class="anyield">
+                        <p>总收入</p>
+                        <p>10000万元</p>
+                    </div>
+                    <canvas class="circleRun" data-run="0" id="part1_2" amout="2000" nowData="1000"></canvas>
+                </div>
+                <div class="surePass">
+                    <div class="anyield">
+                        <p>总商铺</p>
+                        <p>100个</p>
+                    </div>
+                    <canvas class="circleRun" data-run="0" id="part1_3" amout="2000" nowData="1000"></canvas>
+                </div>
+                <div class="surePass">
+                    <div class="anyield">
+                        <p>已售商铺</p>
+                        <p>100个</p>
+                    </div>
+                    <canvas class="circleRun" data-run="0" id="part1_4" amout="2000" nowData="1000"></canvas>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    <div class="col-sm-4">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-file-text-o"></i>&nbsp;饼图</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" id="part2">
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    <div class="col-sm-4">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-bar-chart"></i>&nbsp;折线图</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" id="part3">
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div>
+    <div class="row">
+ 
+    <div class="col-sm-4">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-calendar"></i>&nbsp;展商城市分布数据</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" id="part4">
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    <div class="col-sm-4">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-calendar"></i>&nbsp;柱状与折现混合</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" id="part5">
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+    <div class="col-sm-4">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-calendar"></i>&nbsp;雷达图</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" id="part6">
+                <div id="calendar"></div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+    <div class="col-sm-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-calendar"></i>&nbsp;中国地区区域分布数据</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" id="part7" style="height:500px;">
+                <div id="calendar"></div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+    <div class="col-sm-6">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-calendar"></i>&nbsp;数据列表数据</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" id="part8" style="height:500px;overflow-y:auto;">
+                <table class="gridtable" style="width:100%;">
+                    <tr><th>序号</th><th>地区</th><th>总面积</th><th>已经销售面积</th></tr>
+                    <tr><td>1</td><td>广州</td><td>2000</td><td>2000</td></tr>
+                    <tr><td>2</td><td>上海</td><td>3000</td><td>2000</td></tr>
+                    <tr><td>3</td><td>珠海</td><td>4000</td><td>2000</td></tr>
+                    <tr><td>4</td><td>深圳</td><td>7000</td><td>2000</td></tr>
+                    <tr><td>5</td><td>东莞</td><td>8122</td><td>2000</td></tr>
+                    <tr><td>6</td><td>广州</td><td>2241</td><td>2000</td></tr>
+                    <tr><td>7</td><td>上海</td><td>3456</td><td>2000</td></tr>
+                    <tr><td>8</td><td>珠海</td><td>2544</td><td>2000</td></tr>
+                    <tr><td>9</td><td>深圳</td><td>7242</td><td>2000</td></tr>
+                    <tr><td>10</td><td>东莞</td><td>8785</td><td>2000</td></tr>
+                    <tr><td>11</td><td>广州</td><td>2524</td><td>2000</td></tr>
+                    <tr><td>12</td><td>上海</td><td>3588</td><td>2000</td></tr>
+                    <tr><td>13</td><td>珠海</td><td>4524</td><td>2000</td></tr>
+                    <tr><td>14</td><td>深圳</td><td>7525</td><td>2000</td></tr>
+                    <tr><td>15</td><td>东莞</td><td>8575</td><td>2000</td></tr>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+</div>
+<style>
+    table.gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+
+        table.gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+            text-align:center;
+        }
+
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+</style>

@@ -1,0 +1,79 @@
+﻿
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=gbk" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+    <title>Mobile-Admin</title>
+    <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+    <link type="text/css" rel="stylesheet" href="~/Areas/Mobile/Content/css/flexslider.css" />
+    <link type="text/css" rel="stylesheet" href="~/Areas/Mobile/Content/css/jquery.mmenu.all.css" />
+    <link type="text/css" rel="stylesheet" href="~/Areas/Mobile/Content/css/style.css" />
+    <link href="~/Content/themes/base/easyui.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/easyui/jquery.easyui.mobile.js"></script>
+    <script type="text/javascript" src="~/Areas/Mobile/Content/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="~/Areas/Mobile/Content/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="~/Areas/Mobile/Content/js/o-script.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <style>        
+        .mainIconPane { width:100%
+        }
+    </style>
+</head>
+<body class="o-page">
+    <!-- Header -->
+
+    @RenderBody()
+
+    <nav id="menu">
+        <ul>
+            <li class="Selected">
+                <a href="/Mobile/Home">
+                    <i class="i-home i-small"></i>主页
+                </a>
+            </li>
+            <li>
+                <a href="/Mobile/Account/Aboutme">
+                    <i class="i-about i-small"></i>关于我们
+                </a>
+            </li>
+            <li>
+                <a href="/Mobile/Home/Todo">
+                    <i class="i-blog i-small"></i>待办事项
+                </a>
+                <ul>
+                    <li><a href="/Mobile/Home/Todo">我的待办</a></li>
+                    <li>
+                        <a href="/Mobile/Home/Todo">我的已办</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="/Mobile/Home/Todo">
+                    <i class="i-gallery i-small"></i>通知公告
+                </a>
+            </li>
+            <li>
+                <a href="/Mobile/Home/ShortCodes">
+                    <i class="i-shortcodes i-small"></i>帮助文档
+                </a>
+            </li>
+            <li>
+                <a href="/Mobile/Account/Person">
+                    <i class="i-contact i-small"></i>个人中心
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="subFooter" style="bottom:0;position:absolute;">Copyright 2020. All rights reserved.</div>
+
+</body>
+</html>

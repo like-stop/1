@@ -1,0 +1,1924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Flow_External">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="250" />
+    <Property Name="SysUserId" Type="varchar" MaxLength="50" />
+    <Property Name="TrueName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flow_Form">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="UsingDep" Type="nvarchar" MaxLength="2000" />
+    <Property Name="TypeId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="HtmlForm" Type="nvarchar(max)" />
+    <Property Name="IsExternal" Type="bit" Nullable="false" />
+    <Property Name="ExternalURL" Type="varchar" MaxLength="2000" />
+    <Property Name="AttrA" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrB" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrC" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrD" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrE" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrF" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrG" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrH" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrI" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrJ" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrK" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrL" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrM" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrN" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrO" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrP" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrQ" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrR" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrS" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrT" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrU" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrV" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrW" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrX" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrY" Type="nvarchar" MaxLength="50" />
+    <Property Name="AttrZ" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Flow_FormAttr">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AttrType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CheckRule" Type="nvarchar" MaxLength="50" />
+    <Property Name="CheckJS" Type="nvarchar(max)" />
+    <Property Name="TypeId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="OptionList" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Flow_FormContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FormId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FormLevel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="AttrA" Type="nvarchar(max)" />
+    <Property Name="AttrB" Type="nvarchar(max)" />
+    <Property Name="AttrC" Type="nvarchar(max)" />
+    <Property Name="AttrD" Type="nvarchar(max)" />
+    <Property Name="AttrE" Type="nvarchar(max)" />
+    <Property Name="AttrF" Type="nvarchar(max)" />
+    <Property Name="AttrG" Type="nvarchar(max)" />
+    <Property Name="AttrH" Type="nvarchar(max)" />
+    <Property Name="AttrI" Type="nvarchar(max)" />
+    <Property Name="AttrJ" Type="nvarchar(max)" />
+    <Property Name="AttrK" Type="nvarchar(max)" />
+    <Property Name="AttrL" Type="nvarchar(max)" />
+    <Property Name="AttrM" Type="nvarchar(max)" />
+    <Property Name="AttrN" Type="nvarchar(max)" />
+    <Property Name="AttrO" Type="nvarchar(max)" />
+    <Property Name="AttrP" Type="nvarchar(max)" />
+    <Property Name="AttrQ" Type="nvarchar(max)" />
+    <Property Name="AttrR" Type="nvarchar(max)" />
+    <Property Name="AttrS" Type="nvarchar(max)" />
+    <Property Name="AttrT" Type="nvarchar(max)" />
+    <Property Name="AttrU" Type="nvarchar(max)" />
+    <Property Name="AttrV" Type="nvarchar(max)" />
+    <Property Name="AttrW" Type="nvarchar(max)" />
+    <Property Name="AttrX" Type="nvarchar(max)" />
+    <Property Name="AttrY" Type="nvarchar(max)" />
+    <Property Name="AttrZ" Type="nvarchar(max)" />
+    <Property Name="CustomMember" Type="nvarchar(max)" />
+    <Property Name="TimeOut" Type="datetime" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flow_FormContentStepCheck">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContentId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StepId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="StateFlag" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsEnd" Type="bit" Nullable="false" />
+    <Property Name="IsCustom" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flow_FormContentStepCheckState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StepCheckId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CheckFlag" Type="int" Nullable="false" />
+    <Property Name="Reamrk" Type="nvarchar" MaxLength="2000" />
+    <Property Name="TheSeal" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flow_Seal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Path" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="SysUserId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flow_Step">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="FormId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FlowRule" Type="int" Nullable="false" />
+    <Property Name="IsCustom" Type="bit" Nullable="false" />
+    <Property Name="IsAllCheck" Type="bit" Nullable="false" />
+    <Property Name="Execution" Type="nvarchar(max)" />
+    <Property Name="CompulsoryOver" Type="bit" Nullable="false" />
+    <Property Name="IsEditAttr" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flow_StepRule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StepId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AttrId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Operator" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Result" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NextStep" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Flow_Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JOB_TASKJOBS">
+    <Key>
+      <PropertyRef Name="sno" />
+    </Key>
+    <Property Name="sno" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="taskName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Id" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="taskTitle" Type="nvarchar" MaxLength="150" />
+    <Property Name="taskCmd" Type="nvarchar" MaxLength="150" />
+    <Property Name="crtDt" Type="datetime" />
+    <Property Name="state" Type="int" />
+    <Property Name="creator" Type="nvarchar" MaxLength="32" />
+    <Property Name="procName" Type="nvarchar" MaxLength="512" />
+    <Property Name="procParams" Type="nvarchar" MaxLength="2048" />
+  </EntityType>
+  <EntityType Name="JOB_TASKJOBS_LOG">
+    <Key>
+      <PropertyRef Name="itemID" />
+    </Key>
+    <Property Name="itemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sno" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="taskName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Id" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="executeDt" Type="datetime" />
+    <Property Name="executeStep" Type="nvarchar" MaxLength="150" />
+    <Property Name="result" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="MIS_Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="ImgUrl" Type="varchar" MaxLength="255" />
+    <Property Name="BodyContent" Type="nvarchar(max)" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="Click" Type="int" />
+    <Property Name="CheckFlag" Type="int" Nullable="false" />
+    <Property Name="Checker" Type="varchar" MaxLength="50" />
+    <Property Name="CheckDateTime" Type="datetime" />
+    <Property Name="Creater" Type="varchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="CustomLink" Type="varchar" MaxLength="300" />
+    <Property Name="IsType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MIS_Article_Albums">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArticleId" Type="varchar" MaxLength="50" />
+    <Property Name="BigImg" Type="varchar" MaxLength="255" />
+    <Property Name="SmallImg" Type="varchar" MaxLength="255" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="MIS_Article_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChannelId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ParentId" Type="varchar" MaxLength="50" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="ImgUrl" Type="varchar" MaxLength="255" />
+    <Property Name="BodyContent" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MIS_Article_Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArticleId" Type="varchar" MaxLength="50" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" />
+    <Property Name="TrueName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IP" Type="varchar" MaxLength="255" />
+    <Property Name="BodyContent" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="IsReply" Type="int" />
+    <Property Name="ReplyContent" Type="nvarchar(max)" />
+    <Property Name="ReplyTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MIS_WebIM_CommonTalk">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Talk" Type="nvarchar" MaxLength="300" />
+    <Property Name="State" Type="bit" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MIS_WebIM_Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="1024" />
+    <Property Name="Sender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="receiver" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+    <Property Name="SendDt" Type="datetime" />
+    <Property Name="receiverTitle" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MIS_WebIM_Message_Rec">
+    <Key>
+      <PropertyRef Name="MessageId" />
+      <PropertyRef Name="receiver" />
+    </Key>
+    <Property Name="MessageId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="receiver" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+    <Property Name="RecDt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MIS_WebIM_RecentContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContactPersons" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InfoTime" Type="datetime" Nullable="false" />
+    <Property Name="ContactPersonsTitle" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Spl_ContactCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="ContactCompanyCategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_ContactCompanyCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_InOutCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="Age" Type="int" />
+    <Property Name="IDCard" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Spl_Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CostPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Number" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_ProductCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_WareCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParentId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_WareDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BarCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WareCategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Lable" Type="nvarchar" MaxLength="200" />
+    <Property Name="BuyPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SalePrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="RetailPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="Vender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="Material" Type="nvarchar" MaxLength="50" />
+    <Property Name="Size" Type="nvarchar" MaxLength="50" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="50" />
+    <Property Name="ComeFrom" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpperLimit" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="LowerLimit" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PrimeCost" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Price1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Price2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Price3" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Price4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Price5" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Photo1" Type="varchar" MaxLength="200" />
+    <Property Name="Photo2" Type="varchar" MaxLength="200" />
+    <Property Name="Photo3" Type="varchar" MaxLength="200" />
+    <Property Name="Photo4" Type="varchar" MaxLength="200" />
+    <Property Name="Photo5" Type="varchar" MaxLength="200" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_Warehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactPhone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="WarehouseCategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_WarehouseCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sort" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_WarehouseWarrant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InTime" Type="datetime" Nullable="false" />
+    <Property Name="Handler" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PriceTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="Checker" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CheckTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreatePerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="ModifyPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="Confirmation" Type="bit" Nullable="false" />
+    <Property Name="InOutCategoryId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WarehouseId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_WarehouseWarrantDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WareDetailsId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WarehouseId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WarehouseWarrantId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Defined" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Spl_WareUnitConvert">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MainUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssistUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ConvertRate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysAreas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParentId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsMunicipality" Type="bit" Nullable="false" />
+    <Property Name="IsHKMT" Type="bit" Nullable="false" />
+    <Property Name="IsOther" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysCalendarPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PlanContent" Type="nvarchar(max)" />
+    <Property Name="BeginDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="250" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="TextColor" Type="varchar" MaxLength="50" />
+    <Property Name="SysUserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Editable" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SysException">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HelpLink" Type="varchar" MaxLength="500" />
+    <Property Name="Message" Type="nvarchar" MaxLength="500" />
+    <Property Name="Source" Type="nvarchar" MaxLength="500" />
+    <Property Name="StackTrace" Type="nvarchar(max)" />
+    <Property Name="TargetSite" Type="varchar" MaxLength="500" />
+    <Property Name="Data" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SysLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Operator" Type="nvarchar" MaxLength="50" />
+    <Property Name="Message" Type="nvarchar" MaxLength="500" />
+    <Property Name="Result" Type="nvarchar" MaxLength="20" />
+    <Property Name="Type" Type="nvarchar" MaxLength="20" />
+    <Property Name="Module" Type="nvarchar" MaxLength="220" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SysModule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="EnglishName" Type="varchar" MaxLength="200" />
+    <Property Name="ParentId" Type="varchar" MaxLength="50" />
+    <Property Name="Url" Type="varchar" MaxLength="200" />
+    <Property Name="Iconic" Type="varchar" MaxLength="200" />
+    <Property Name="Sort" Type="int" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="IsLast" Type="bit" Nullable="false" />
+    <Property Name="Version" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="SysModuleDataFilter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="KeyCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ModuleId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysModuleOperate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="KeyCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ModuleId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysPosition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="MemberCount" Type="int" Nullable="false" />
+    <Property Name="DepId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysRight">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ModuleId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rightflag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysRightDataFilter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RightId" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="KeyCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysRightOperate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="RightId" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="KeyCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysRoleSysUser">
+    <Key>
+      <PropertyRef Name="SysUserId" />
+      <PropertyRef Name="SysRoleId" />
+    </Key>
+    <Property Name="SysUserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SysRoleId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysSample">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Bir" Type="datetime" />
+    <Property Name="Photo" Type="varchar" MaxLength="50" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SysSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Parameter" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReMark" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysStruct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParentId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="Higher" Type="varchar" MaxLength="50" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="TrueName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Card" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="200" />
+    <Property Name="QQ" Type="varchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="200" />
+    <Property Name="OtherContact" Type="varchar" MaxLength="200" />
+    <Property Name="Province" Type="nvarchar" MaxLength="200" />
+    <Property Name="City" Type="nvarchar" MaxLength="200" />
+    <Property Name="Village" Type="nvarchar" MaxLength="200" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="State" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="CreatePerson" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="JoinDate" Type="datetime" />
+    <Property Name="Marital" Type="nvarchar" MaxLength="10" />
+    <Property Name="Political" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="20" />
+    <Property Name="Native" Type="nvarchar" MaxLength="20" />
+    <Property Name="School" Type="nvarchar" MaxLength="50" />
+    <Property Name="Professional" Type="nvarchar" MaxLength="100" />
+    <Property Name="Degree" Type="nvarchar" MaxLength="20" />
+    <Property Name="DepId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PosId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expertise" Type="nvarchar" MaxLength="3000" />
+    <Property Name="JobState" Type="bit" Nullable="false" />
+    <Property Name="Photo" Type="varchar" MaxLength="200" />
+    <Property Name="Attach" Type="varchar" MaxLength="200" />
+    <Property Name="Lead" Type="nvarchar(max)" />
+    <Property Name="LeadName" Type="nvarchar(max)" />
+    <Property Name="IsSelLead" Type="bit" Nullable="false" />
+    <Property Name="IsReportCalendar" Type="bit" Nullable="false" />
+    <Property Name="IsSecretary" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“AppsDB_new.dbo.SysUserConfig”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="SysUserConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Value" Type="varchar(max)" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="bit" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SysValidToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="OverTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WC_Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="OfficalAccountId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WC_MessageResponse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfficalAccountId" Type="varchar" MaxLength="50" />
+    <Property Name="MessageRule" Type="int" />
+    <Property Name="Category" Type="int" />
+    <Property Name="MatchKey" Type="varchar" MaxLength="1000" />
+    <Property Name="TextContent" Type="nvarchar(max)" />
+    <Property Name="ImgTextContext" Type="varchar(max)" />
+    <Property Name="ImgTextUrl" Type="varchar" MaxLength="1000" />
+    <Property Name="ImgTextLink" Type="varchar" MaxLength="1000" />
+    <Property Name="MeidaUrl" Type="varchar" MaxLength="1000" />
+    <Property Name="MeidaLink" Type="varchar" MaxLength="1000" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Sort" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WC_OfficalAccounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfficalId" Type="varchar" MaxLength="200" />
+    <Property Name="OfficalName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="OfficalCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="OfficalPhoto" Type="varchar" MaxLength="1000" />
+    <Property Name="OfficalKey" Type="varchar" MaxLength="500" />
+    <Property Name="ApiUrl" Type="varchar" MaxLength="1000" />
+    <Property Name="Token" Type="varchar" MaxLength="200" />
+    <Property Name="AppId" Type="varchar" MaxLength="200" />
+    <Property Name="AppSecret" Type="varchar" MaxLength="200" />
+    <Property Name="AccessToken" Type="varchar" MaxLength="200" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" Nullable="false" />
+    <Property Name="Category" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WC_ResponseLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OfficalAccountId" Type="varchar" MaxLength="50" />
+    <Property Name="OpenId" Type="varchar" MaxLength="200" />
+    <Property Name="RequestType" Type="int" />
+    <Property Name="RequestContent" Type="nvarchar(max)" />
+    <Property Name="ResponseType" Type="int" />
+    <Property Name="ResponseContent" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+    <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WC_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OpenId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NickName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sex" Type="int" Nullable="false" />
+    <Property Name="Language" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Province" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="HeadImgUrl" Type="varchar" MaxLength="1000" />
+    <Property Name="SubscribeTime" Type="datetime" Nullable="false" />
+    <Property Name="UnionId" Type="varchar" MaxLength="200" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+    <Property Name="GroupId" Type="varchar" MaxLength="50" />
+    <Property Name="TagidList" Type="varchar" MaxLength="1000" />
+    <Property Name="Subscribe" Type="int" Nullable="false" />
+    <Property Name="OfficalAccountId" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Flow_Form_Flow_Type">
+    <End Role="Flow_Type" Type="Self.Flow_Type" Multiplicity="1" />
+    <End Role="Flow_Form" Type="Self.Flow_Form" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow_Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_Form">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_FormAttr_Flow_Type">
+    <End Role="Flow_Type" Type="Self.Flow_Type" Multiplicity="1" />
+    <End Role="Flow_FormAttr" Type="Self.Flow_FormAttr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow_Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_FormAttr">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_FormContent_Flow_Form">
+    <End Role="Flow_Form" Type="Self.Flow_Form" Multiplicity="1" />
+    <End Role="Flow_FormContent" Type="Self.Flow_FormContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow_Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_FormContent">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_FormContent_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+    <End Role="Flow_FormContent" Type="Self.Flow_FormContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_FormContent">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_FormContentStepCheckState_Flow_FormContentStepCheck">
+    <End Role="Flow_FormContentStepCheck" Type="Self.Flow_FormContentStepCheck" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flow_FormContentStepCheckState" Type="Self.Flow_FormContentStepCheckState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow_FormContentStepCheck">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_FormContentStepCheckState">
+        <PropertyRef Name="StepCheckId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_FormContentStepCheckState_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+    <End Role="Flow_FormContentStepCheckState" Type="Self.Flow_FormContentStepCheckState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_FormContentStepCheckState">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_Seal_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+    <End Role="Flow_Seal" Type="Self.Flow_Seal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_Seal">
+        <PropertyRef Name="SysUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_Step_Flow_Form">
+    <End Role="Flow_Form" Type="Self.Flow_Form" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flow_Step" Type="Self.Flow_Step" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow_Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_Step">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_StepRule_Flow_Step">
+    <End Role="Flow_Step" Type="Self.Flow_Step" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flow_StepRule" Type="Self.Flow_StepRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow_Step">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_StepRule">
+        <PropertyRef Name="StepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flow_StepState_Flow_StepState">
+    <End Role="Flow_FormContent" Type="Self.Flow_FormContent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Flow_FormContentStepCheck" Type="Self.Flow_FormContentStepCheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flow_FormContent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flow_FormContentStepCheck">
+        <PropertyRef Name="ContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JOB_TASKJOBS_LOG_JOB_TASKJOBS">
+    <End Role="JOB_TASKJOBS" Type="Self.JOB_TASKJOBS" Multiplicity="1" />
+    <End Role="JOB_TASKJOBS_LOG" Type="Self.JOB_TASKJOBS_LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOB_TASKJOBS">
+        <PropertyRef Name="sno" />
+      </Principal>
+      <Dependent Role="JOB_TASKJOBS_LOG">
+        <PropertyRef Name="sno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_Article_Albums_MIS_Article">
+    <End Role="MIS_Article" Type="Self.MIS_Article" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MIS_Article_Albums" Type="Self.MIS_Article_Albums" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MIS_Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_Article_Albums">
+        <PropertyRef Name="ArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_Article_Category_MIS_Article_Category">
+    <End Role="MIS_Article_Category" Type="Self.MIS_Article_Category" Multiplicity="0..1" />
+    <End Role="MIS_Article_Category1" Type="Self.MIS_Article_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MIS_Article_Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_Article_Category1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_Article_Comment_MIS_Article">
+    <End Role="MIS_Article" Type="Self.MIS_Article" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MIS_Article_Comment" Type="Self.MIS_Article_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MIS_Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_Article_Comment">
+        <PropertyRef Name="ArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_Article_Comment_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MIS_Article_Comment" Type="Self.MIS_Article_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_Article_Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_Article_MIS_Article_Category">
+    <End Role="MIS_Article_Category" Type="Self.MIS_Article_Category" Multiplicity="1" />
+    <End Role="MIS_Article" Type="Self.MIS_Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MIS_Article_Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_Article">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_Article_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="0..1" />
+    <End Role="MIS_Article" Type="Self.MIS_Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_Article">
+        <PropertyRef Name="Creater" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_Article_SysUser1">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="0..1" />
+    <End Role="MIS_Article" Type="Self.MIS_Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_Article">
+        <PropertyRef Name="Checker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MIS_MESS_REFERENCE_MIS_MESS">
+    <End Role="MIS_WebIM_Message" Type="Self.MIS_WebIM_Message" Multiplicity="1" />
+    <End Role="MIS_WebIM_Message_Rec" Type="Self.MIS_WebIM_Message_Rec" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MIS_WebIM_Message">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MIS_WebIM_Message_Rec">
+        <PropertyRef Name="MessageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_ContactCompany_Spl_ContactCompanyCategory">
+    <End Role="Spl_ContactCompanyCategory" Type="Self.Spl_ContactCompanyCategory" Multiplicity="1" />
+    <End Role="Spl_ContactCompany" Type="Self.Spl_ContactCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_ContactCompanyCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_ContactCompany">
+        <PropertyRef Name="ContactCompanyCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_Product_Spl_ProductCategory">
+    <End Role="Spl_ProductCategory" Type="Self.Spl_ProductCategory" Multiplicity="1" />
+    <End Role="Spl_Product" Type="Self.Spl_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_ProductCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_WareCategory_Spl_WareCategory">
+    <End Role="Spl_WareCategory" Type="Self.Spl_WareCategory" Multiplicity="1" />
+    <End Role="Spl_WareCategory1" Type="Self.Spl_WareCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_WareCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_WareCategory1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_WareDetails_Spl_WareCategory">
+    <End Role="Spl_WareCategory" Type="Self.Spl_WareCategory" Multiplicity="1" />
+    <End Role="Spl_WareDetails" Type="Self.Spl_WareDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_WareCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_WareDetails">
+        <PropertyRef Name="WareCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_Warehouse_Spl_WarehouseCategory">
+    <End Role="Spl_WarehouseCategory" Type="Self.Spl_WarehouseCategory" Multiplicity="1" />
+    <End Role="Spl_Warehouse" Type="Self.Spl_Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_WarehouseCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_Warehouse">
+        <PropertyRef Name="WarehouseCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_WarehouseWarrant_Spl_Warehouse">
+    <End Role="Spl_Warehouse" Type="Self.Spl_Warehouse" Multiplicity="1" />
+    <End Role="Spl_WarehouseWarrant" Type="Self.Spl_WarehouseWarrant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_WarehouseWarrant">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_WarehouseWarrant_Spl_WarehouseWarrant">
+    <End Role="Spl_InOutCategory" Type="Self.Spl_InOutCategory" Multiplicity="1" />
+    <End Role="Spl_WarehouseWarrant" Type="Self.Spl_WarehouseWarrant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_InOutCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_WarehouseWarrant">
+        <PropertyRef Name="InOutCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_WarehouseWarrantDetails_Spl_WareDetails">
+    <End Role="Spl_WareDetails" Type="Self.Spl_WareDetails" Multiplicity="1" />
+    <End Role="Spl_WarehouseWarrantDetails" Type="Self.Spl_WarehouseWarrantDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_WareDetails">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_WarehouseWarrantDetails">
+        <PropertyRef Name="WareDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_WarehouseWarrantDetails_Spl_Warehouse">
+    <End Role="Spl_Warehouse" Type="Self.Spl_Warehouse" Multiplicity="1" />
+    <End Role="Spl_WarehouseWarrantDetails" Type="Self.Spl_WarehouseWarrantDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_WarehouseWarrantDetails">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spl_WarehouseWarrantDetails_Spl_WarehouseWarrant">
+    <End Role="Spl_WarehouseWarrant" Type="Self.Spl_WarehouseWarrant" Multiplicity="1" />
+    <End Role="Spl_WarehouseWarrantDetails" Type="Self.Spl_WarehouseWarrantDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spl_WarehouseWarrant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spl_WarehouseWarrantDetails">
+        <PropertyRef Name="WarehouseWarrantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysAreas_SysAreas">
+    <End Role="SysAreas" Type="Self.SysAreas" Multiplicity="1" />
+    <End Role="SysAreas1" Type="Self.SysAreas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysAreas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysAreas1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysCalendarPlan_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+    <End Role="SysCalendarPlan" Type="Self.SysCalendarPlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysCalendarPlan">
+        <PropertyRef Name="SysUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysModule_SysModule">
+    <End Role="SysModule" Type="Self.SysModule" Multiplicity="0..1" />
+    <End Role="SysModule1" Type="Self.SysModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysModule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysModule1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysModuleDataFilter_SysModule">
+    <End Role="SysModule" Type="Self.SysModule" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysModuleDataFilter" Type="Self.SysModuleDataFilter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysModule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysModuleDataFilter">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysModuleOperate_SysModule">
+    <End Role="SysModule" Type="Self.SysModule" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysModuleOperate" Type="Self.SysModuleOperate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysModule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysModuleOperate">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysPosition_SysStruct">
+    <End Role="SysStruct" Type="Self.SysStruct" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysPosition" Type="Self.SysPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysStruct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysPosition">
+        <PropertyRef Name="DepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysRight_SysModule">
+    <End Role="SysModule" Type="Self.SysModule" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysRight" Type="Self.SysRight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysModule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysRight">
+        <PropertyRef Name="ModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysRight_SysRole">
+    <End Role="SysRole" Type="Self.SysRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysRight" Type="Self.SysRight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysRight">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysRightDataFilter_SysRight">
+    <End Role="SysRight" Type="Self.SysRight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysRightDataFilter" Type="Self.SysRightDataFilter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysRight">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysRightDataFilter">
+        <PropertyRef Name="RightId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysRightOperate_SysRight">
+    <End Role="SysRight" Type="Self.SysRight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysRightOperate" Type="Self.SysRightOperate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysRight">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysRightOperate">
+        <PropertyRef Name="RightId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysRoleSysUser_SysRole">
+    <End Role="SysRole" Type="Self.SysRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysRoleSysUser" Type="Self.SysRoleSysUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysRoleSysUser">
+        <PropertyRef Name="SysRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysRoleSysUser_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SysRoleSysUser" Type="Self.SysRoleSysUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysRoleSysUser">
+        <PropertyRef Name="SysUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysStruct_SysStruct">
+    <End Role="SysStruct" Type="Self.SysStruct" Multiplicity="1" />
+    <End Role="SysStruct1" Type="Self.SysStruct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysStruct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysStruct1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysUser_SysPosition">
+    <End Role="SysPosition" Type="Self.SysPosition" Multiplicity="1" />
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysPosition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysUser">
+        <PropertyRef Name="PosId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysUser_SysStruct">
+    <End Role="SysStruct" Type="Self.SysStruct" Multiplicity="1" />
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysStruct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysUser">
+        <PropertyRef Name="DepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SysUserConfig_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="0..1" />
+    <End Role="SysUserConfig" Type="Self.SysUserConfig" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SysUserConfig">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WC_Group_WC_OfficalAccounts">
+    <End Role="WC_OfficalAccounts" Type="Self.WC_OfficalAccounts" Multiplicity="1" />
+    <End Role="WC_Group" Type="Self.WC_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WC_OfficalAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WC_Group">
+        <PropertyRef Name="OfficalAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WC_MessageResponse_WC_OfficalAcconts">
+    <End Role="WC_OfficalAccounts" Type="Self.WC_OfficalAccounts" Multiplicity="0..1" />
+    <End Role="WC_MessageResponse" Type="Self.WC_MessageResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WC_OfficalAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WC_MessageResponse">
+        <PropertyRef Name="OfficalAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WC_OfficalAcconts_SysUser">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+    <End Role="WC_OfficalAccounts" Type="Self.WC_OfficalAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WC_OfficalAccounts">
+        <PropertyRef Name="CreateBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WC_User_WC_Group">
+    <End Role="WC_Group" Type="Self.WC_Group" Multiplicity="0..1" />
+    <End Role="WC_User" Type="Self.WC_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WC_Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WC_User">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WC_User_WC_OfficalAccounts">
+    <End Role="WC_OfficalAccounts" Type="Self.WC_OfficalAccounts" Multiplicity="1" />
+    <End Role="WC_User" Type="Self.WC_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WC_OfficalAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WC_User">
+        <PropertyRef Name="OfficalAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WC_UserResponseLog_WC_OfficalAcconts">
+    <End Role="WC_OfficalAccounts" Type="Self.WC_OfficalAccounts" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WC_ResponseLog" Type="Self.WC_ResponseLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WC_OfficalAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WC_ResponseLog">
+        <PropertyRef Name="OfficalAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="P_Flow_ResetCheckStepState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stepCheckId" Type="varchar" Mode="In" />
+    <Parameter Name="ContentId" Type="varchar" Mode="In" />
+    <Parameter Name="CheckState" Type="int" Mode="In" />
+    <Parameter Name="CheckFlag" Type="int" Mode="In" />
+  </Function>
+  <Function Name="P_JOB_DeleteTaskJobs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_JOB_ENTERY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_JOB_GetUnTrackTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="P_JOB_U1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CUSTOMERID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_JOB_UpdateState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sno" Type="varchar" Mode="In" />
+    <Parameter Name="state" Type="int" Mode="In" />
+    <Parameter Name="result" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_CreateMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="message" Type="varchar" Mode="In" />
+    <Parameter Name="sender" Type="varchar" Mode="In" />
+    <Parameter Name="receiver" Type="varchar" Mode="In" />
+    <Parameter Name="receiverTitle" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_DeleteMessageAllByReceiver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="receiver" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_DeleteMessageAllBySender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sender" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_DeleteMessageByReceiver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+    <Parameter Name="receiver" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_DeleteMessageBySender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_GetMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="rows" Type="int" Mode="In" />
+    <Parameter Name="rowscount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="P_MIS_GetSenderByReceiver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="receiver" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_Info_EduMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="InfoId" Type="varchar" Mode="In" />
+    <Parameter Name="Body" Type="text" Mode="In" />
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_Info_GetFavoriteByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+    <Parameter Name="WhereSQL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_Info_GetICanManage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WhereSQL" Type="varchar" Mode="In" />
+    <Parameter Name="Rows" Type="int" Mode="In" />
+    <Parameter Name="PageNo" Type="int" Mode="In" />
+    <Parameter Name="RowsCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="P_MIS_Info_GetICanRead" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+    <Parameter Name="WhereSQL" Type="varchar" Mode="In" />
+    <Parameter Name="Rows" Type="int" Mode="In" />
+    <Parameter Name="PageNo" Type="int" Mode="In" />
+    <Parameter Name="RowsCount" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="P_MIS_Info_GetPostInfoByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+    <Parameter Name="WhereSQL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_SetMessageHasReadById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="receiver" Type="varchar" Mode="In" />
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_SetMessageHasReadByReceiver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="receiver" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_MIS_SetMessageHasReadFromSenderToReceiver" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sender" Type="varchar" Mode="In" />
+    <Parameter Name="receiver" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_QRTZ_GetJobExecuteTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Spl_GetWareCountByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_ClearUnusedRightOperate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="P_Sys_DeleteSysRoleSysUserByRoleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_DeleteSysRoleSysUserByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetModule_RoleRight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="moduleId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetModule_UserRight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="moduleId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetRightByRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetRightByRoleAndModule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleId" Type="varchar" Mode="In" />
+    <Parameter Name="moduleId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetRightByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetRightDataByRoleAndModule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleId" Type="varchar" Mode="In" />
+    <Parameter Name="moduleId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetRightOperate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+    <Parameter Name="url" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetRoleByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetUserByDepId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DepId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetUserByRoleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="varchar" Mode="In" />
+    <Parameter Name="DepId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_GetUserCountByDepId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DepId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_InsertSysRight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="P_Sys_UpdateSysRightRightFlag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="moduleId" Type="varchar" Mode="In" />
+    <Parameter Name="roleId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_Sys_UpdateSysRoleSysUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleId" Type="varchar" Mode="In" />
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_WC_GetResponseContent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="officalAccountId" Type="varchar" Mode="In" />
+    <Parameter Name="matchKey" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="P_WebPart_GetInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Rows" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DBStoreContainer">
+    <EntitySet Name="Flow_External" EntityType="Self.Flow_External" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_Form" EntityType="Self.Flow_Form" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_FormAttr" EntityType="Self.Flow_FormAttr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_FormContent" EntityType="Self.Flow_FormContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_FormContentStepCheck" EntityType="Self.Flow_FormContentStepCheck" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_FormContentStepCheckState" EntityType="Self.Flow_FormContentStepCheckState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_Seal" EntityType="Self.Flow_Seal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_Step" EntityType="Self.Flow_Step" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_StepRule" EntityType="Self.Flow_StepRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flow_Type" EntityType="Self.Flow_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOB_TASKJOBS" EntityType="Self.JOB_TASKJOBS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOB_TASKJOBS_LOG" EntityType="Self.JOB_TASKJOBS_LOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_Article" EntityType="Self.MIS_Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_Article_Albums" EntityType="Self.MIS_Article_Albums" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_Article_Category" EntityType="Self.MIS_Article_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_Article_Comment" EntityType="Self.MIS_Article_Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_WebIM_CommonTalk" EntityType="Self.MIS_WebIM_CommonTalk" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_WebIM_Message" EntityType="Self.MIS_WebIM_Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_WebIM_Message_Rec" EntityType="Self.MIS_WebIM_Message_Rec" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIS_WebIM_RecentContact" EntityType="Self.MIS_WebIM_RecentContact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_ContactCompany" EntityType="Self.Spl_ContactCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_ContactCompanyCategory" EntityType="Self.Spl_ContactCompanyCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_InOutCategory" EntityType="Self.Spl_InOutCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_Person" EntityType="Self.Spl_Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_Product" EntityType="Self.Spl_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_ProductCategory" EntityType="Self.Spl_ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_WareCategory" EntityType="Self.Spl_WareCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_WareDetails" EntityType="Self.Spl_WareDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_Warehouse" EntityType="Self.Spl_Warehouse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_WarehouseCategory" EntityType="Self.Spl_WarehouseCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_WarehouseWarrant" EntityType="Self.Spl_WarehouseWarrant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_WarehouseWarrantDetails" EntityType="Self.Spl_WarehouseWarrantDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spl_WareUnitConvert" EntityType="Self.Spl_WareUnitConvert" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysAreas" EntityType="Self.SysAreas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysCalendarPlan" EntityType="Self.SysCalendarPlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysException" EntityType="Self.SysException" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysLog" EntityType="Self.SysLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysModule" EntityType="Self.SysModule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysModuleDataFilter" EntityType="Self.SysModuleDataFilter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysModuleOperate" EntityType="Self.SysModuleOperate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysPosition" EntityType="Self.SysPosition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysRight" EntityType="Self.SysRight" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysRightDataFilter" EntityType="Self.SysRightDataFilter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysRightOperate" EntityType="Self.SysRightOperate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysRole" EntityType="Self.SysRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysRoleSysUser" EntityType="Self.SysRoleSysUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysSample" EntityType="Self.SysSample" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysSettings" EntityType="Self.SysSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysStruct" EntityType="Self.SysStruct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysUser" EntityType="Self.SysUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysValidToken" EntityType="Self.SysValidToken" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WC_Group" EntityType="Self.WC_Group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WC_MessageResponse" EntityType="Self.WC_MessageResponse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WC_OfficalAccounts" EntityType="Self.WC_OfficalAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WC_ResponseLog" EntityType="Self.WC_ResponseLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WC_User" EntityType="Self.WC_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysUserConfig" EntityType="Self.SysUserConfig" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SysUserConfig].[Id] AS [Id], 
+    [SysUserConfig].[Name] AS [Name], 
+    [SysUserConfig].[Value] AS [Value], 
+    [SysUserConfig].[Type] AS [Type], 
+    [SysUserConfig].[State] AS [State], 
+    [SysUserConfig].[UserId] AS [UserId]
+    FROM [dbo].[SysUserConfig] AS [SysUserConfig]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Flow_Form_Flow_Type" Association="Self.FK_Flow_Form_Flow_Type">
+      <End Role="Flow_Type" EntitySet="Flow_Type" />
+      <End Role="Flow_Form" EntitySet="Flow_Form" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_FormAttr_Flow_Type" Association="Self.FK_Flow_FormAttr_Flow_Type">
+      <End Role="Flow_Type" EntitySet="Flow_Type" />
+      <End Role="Flow_FormAttr" EntitySet="Flow_FormAttr" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_FormContent_Flow_Form" Association="Self.FK_Flow_FormContent_Flow_Form">
+      <End Role="Flow_Form" EntitySet="Flow_Form" />
+      <End Role="Flow_FormContent" EntitySet="Flow_FormContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_FormContent_SysUser" Association="Self.FK_Flow_FormContent_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="Flow_FormContent" EntitySet="Flow_FormContent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_FormContentStepCheckState_Flow_FormContentStepCheck" Association="Self.FK_Flow_FormContentStepCheckState_Flow_FormContentStepCheck">
+      <End Role="Flow_FormContentStepCheck" EntitySet="Flow_FormContentStepCheck" />
+      <End Role="Flow_FormContentStepCheckState" EntitySet="Flow_FormContentStepCheckState" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_FormContentStepCheckState_SysUser" Association="Self.FK_Flow_FormContentStepCheckState_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="Flow_FormContentStepCheckState" EntitySet="Flow_FormContentStepCheckState" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_Seal_SysUser" Association="Self.FK_Flow_Seal_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="Flow_Seal" EntitySet="Flow_Seal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_Step_Flow_Form" Association="Self.FK_Flow_Step_Flow_Form">
+      <End Role="Flow_Form" EntitySet="Flow_Form" />
+      <End Role="Flow_Step" EntitySet="Flow_Step" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_StepRule_Flow_Step" Association="Self.FK_Flow_StepRule_Flow_Step">
+      <End Role="Flow_Step" EntitySet="Flow_Step" />
+      <End Role="Flow_StepRule" EntitySet="Flow_StepRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flow_StepState_Flow_StepState" Association="Self.FK_Flow_StepState_Flow_StepState">
+      <End Role="Flow_FormContent" EntitySet="Flow_FormContent" />
+      <End Role="Flow_FormContentStepCheck" EntitySet="Flow_FormContentStepCheck" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JOB_TASKJOBS_LOG_JOB_TASKJOBS" Association="Self.FK_JOB_TASKJOBS_LOG_JOB_TASKJOBS">
+      <End Role="JOB_TASKJOBS" EntitySet="JOB_TASKJOBS" />
+      <End Role="JOB_TASKJOBS_LOG" EntitySet="JOB_TASKJOBS_LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_Article_Albums_MIS_Article" Association="Self.FK_MIS_Article_Albums_MIS_Article">
+      <End Role="MIS_Article" EntitySet="MIS_Article" />
+      <End Role="MIS_Article_Albums" EntitySet="MIS_Article_Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_Article_Category_MIS_Article_Category" Association="Self.FK_MIS_Article_Category_MIS_Article_Category">
+      <End Role="MIS_Article_Category" EntitySet="MIS_Article_Category" />
+      <End Role="MIS_Article_Category1" EntitySet="MIS_Article_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_Article_Comment_MIS_Article" Association="Self.FK_MIS_Article_Comment_MIS_Article">
+      <End Role="MIS_Article" EntitySet="MIS_Article" />
+      <End Role="MIS_Article_Comment" EntitySet="MIS_Article_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_Article_Comment_SysUser" Association="Self.FK_MIS_Article_Comment_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="MIS_Article_Comment" EntitySet="MIS_Article_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_Article_MIS_Article_Category" Association="Self.FK_MIS_Article_MIS_Article_Category">
+      <End Role="MIS_Article_Category" EntitySet="MIS_Article_Category" />
+      <End Role="MIS_Article" EntitySet="MIS_Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_Article_SysUser" Association="Self.FK_MIS_Article_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="MIS_Article" EntitySet="MIS_Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_Article_SysUser1" Association="Self.FK_MIS_Article_SysUser1">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="MIS_Article" EntitySet="MIS_Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MIS_MESS_REFERENCE_MIS_MESS" Association="Self.FK_MIS_MESS_REFERENCE_MIS_MESS">
+      <End Role="MIS_WebIM_Message" EntitySet="MIS_WebIM_Message" />
+      <End Role="MIS_WebIM_Message_Rec" EntitySet="MIS_WebIM_Message_Rec" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_ContactCompany_Spl_ContactCompanyCategory" Association="Self.FK_Spl_ContactCompany_Spl_ContactCompanyCategory">
+      <End Role="Spl_ContactCompanyCategory" EntitySet="Spl_ContactCompanyCategory" />
+      <End Role="Spl_ContactCompany" EntitySet="Spl_ContactCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_Product_Spl_ProductCategory" Association="Self.FK_Spl_Product_Spl_ProductCategory">
+      <End Role="Spl_ProductCategory" EntitySet="Spl_ProductCategory" />
+      <End Role="Spl_Product" EntitySet="Spl_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_WareCategory_Spl_WareCategory" Association="Self.FK_Spl_WareCategory_Spl_WareCategory">
+      <End Role="Spl_WareCategory" EntitySet="Spl_WareCategory" />
+      <End Role="Spl_WareCategory1" EntitySet="Spl_WareCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_WareDetails_Spl_WareCategory" Association="Self.FK_Spl_WareDetails_Spl_WareCategory">
+      <End Role="Spl_WareCategory" EntitySet="Spl_WareCategory" />
+      <End Role="Spl_WareDetails" EntitySet="Spl_WareDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_Warehouse_Spl_WarehouseCategory" Association="Self.FK_Spl_Warehouse_Spl_WarehouseCategory">
+      <End Role="Spl_WarehouseCategory" EntitySet="Spl_WarehouseCategory" />
+      <End Role="Spl_Warehouse" EntitySet="Spl_Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_WarehouseWarrant_Spl_Warehouse" Association="Self.FK_Spl_WarehouseWarrant_Spl_Warehouse">
+      <End Role="Spl_Warehouse" EntitySet="Spl_Warehouse" />
+      <End Role="Spl_WarehouseWarrant" EntitySet="Spl_WarehouseWarrant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_WarehouseWarrant_Spl_WarehouseWarrant" Association="Self.FK_Spl_WarehouseWarrant_Spl_WarehouseWarrant">
+      <End Role="Spl_InOutCategory" EntitySet="Spl_InOutCategory" />
+      <End Role="Spl_WarehouseWarrant" EntitySet="Spl_WarehouseWarrant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_WarehouseWarrantDetails_Spl_WareDetails" Association="Self.FK_Spl_WarehouseWarrantDetails_Spl_WareDetails">
+      <End Role="Spl_WareDetails" EntitySet="Spl_WareDetails" />
+      <End Role="Spl_WarehouseWarrantDetails" EntitySet="Spl_WarehouseWarrantDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_WarehouseWarrantDetails_Spl_Warehouse" Association="Self.FK_Spl_WarehouseWarrantDetails_Spl_Warehouse">
+      <End Role="Spl_Warehouse" EntitySet="Spl_Warehouse" />
+      <End Role="Spl_WarehouseWarrantDetails" EntitySet="Spl_WarehouseWarrantDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spl_WarehouseWarrantDetails_Spl_WarehouseWarrant" Association="Self.FK_Spl_WarehouseWarrantDetails_Spl_WarehouseWarrant">
+      <End Role="Spl_WarehouseWarrant" EntitySet="Spl_WarehouseWarrant" />
+      <End Role="Spl_WarehouseWarrantDetails" EntitySet="Spl_WarehouseWarrantDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysAreas_SysAreas" Association="Self.FK_SysAreas_SysAreas">
+      <End Role="SysAreas" EntitySet="SysAreas" />
+      <End Role="SysAreas1" EntitySet="SysAreas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysCalendarPlan_SysUser" Association="Self.FK_SysCalendarPlan_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="SysCalendarPlan" EntitySet="SysCalendarPlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysModule_SysModule" Association="Self.FK_SysModule_SysModule">
+      <End Role="SysModule" EntitySet="SysModule" />
+      <End Role="SysModule1" EntitySet="SysModule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysModuleDataFilter_SysModule" Association="Self.FK_SysModuleDataFilter_SysModule">
+      <End Role="SysModule" EntitySet="SysModule" />
+      <End Role="SysModuleDataFilter" EntitySet="SysModuleDataFilter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysModuleOperate_SysModule" Association="Self.FK_SysModuleOperate_SysModule">
+      <End Role="SysModule" EntitySet="SysModule" />
+      <End Role="SysModuleOperate" EntitySet="SysModuleOperate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysPosition_SysStruct" Association="Self.FK_SysPosition_SysStruct">
+      <End Role="SysStruct" EntitySet="SysStruct" />
+      <End Role="SysPosition" EntitySet="SysPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysRight_SysModule" Association="Self.FK_SysRight_SysModule">
+      <End Role="SysModule" EntitySet="SysModule" />
+      <End Role="SysRight" EntitySet="SysRight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysRight_SysRole" Association="Self.FK_SysRight_SysRole">
+      <End Role="SysRole" EntitySet="SysRole" />
+      <End Role="SysRight" EntitySet="SysRight" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysRightDataFilter_SysRight" Association="Self.FK_SysRightDataFilter_SysRight">
+      <End Role="SysRight" EntitySet="SysRight" />
+      <End Role="SysRightDataFilter" EntitySet="SysRightDataFilter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysRightOperate_SysRight" Association="Self.FK_SysRightOperate_SysRight">
+      <End Role="SysRight" EntitySet="SysRight" />
+      <End Role="SysRightOperate" EntitySet="SysRightOperate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysRoleSysUser_SysRole" Association="Self.FK_SysRoleSysUser_SysRole">
+      <End Role="SysRole" EntitySet="SysRole" />
+      <End Role="SysRoleSysUser" EntitySet="SysRoleSysUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysRoleSysUser_SysUser" Association="Self.FK_SysRoleSysUser_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="SysRoleSysUser" EntitySet="SysRoleSysUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysStruct_SysStruct" Association="Self.FK_SysStruct_SysStruct">
+      <End Role="SysStruct" EntitySet="SysStruct" />
+      <End Role="SysStruct1" EntitySet="SysStruct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysUser_SysPosition" Association="Self.FK_SysUser_SysPosition">
+      <End Role="SysPosition" EntitySet="SysPosition" />
+      <End Role="SysUser" EntitySet="SysUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysUser_SysStruct" Association="Self.FK_SysUser_SysStruct">
+      <End Role="SysStruct" EntitySet="SysStruct" />
+      <End Role="SysUser" EntitySet="SysUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SysUserConfig_SysUser" Association="Self.FK_SysUserConfig_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="SysUserConfig" EntitySet="SysUserConfig" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WC_Group_WC_OfficalAccounts" Association="Self.FK_WC_Group_WC_OfficalAccounts">
+      <End Role="WC_OfficalAccounts" EntitySet="WC_OfficalAccounts" />
+      <End Role="WC_Group" EntitySet="WC_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WC_MessageResponse_WC_OfficalAcconts" Association="Self.FK_WC_MessageResponse_WC_OfficalAcconts">
+      <End Role="WC_OfficalAccounts" EntitySet="WC_OfficalAccounts" />
+      <End Role="WC_MessageResponse" EntitySet="WC_MessageResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WC_OfficalAcconts_SysUser" Association="Self.FK_WC_OfficalAcconts_SysUser">
+      <End Role="SysUser" EntitySet="SysUser" />
+      <End Role="WC_OfficalAccounts" EntitySet="WC_OfficalAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WC_User_WC_Group" Association="Self.FK_WC_User_WC_Group">
+      <End Role="WC_Group" EntitySet="WC_Group" />
+      <End Role="WC_User" EntitySet="WC_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WC_User_WC_OfficalAccounts" Association="Self.FK_WC_User_WC_OfficalAccounts">
+      <End Role="WC_OfficalAccounts" EntitySet="WC_OfficalAccounts" />
+      <End Role="WC_User" EntitySet="WC_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WC_UserResponseLog_WC_OfficalAcconts" Association="Self.FK_WC_UserResponseLog_WC_OfficalAcconts">
+      <End Role="WC_OfficalAccounts" EntitySet="WC_OfficalAccounts" />
+      <End Role="WC_ResponseLog" EntitySet="WC_ResponseLog" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
